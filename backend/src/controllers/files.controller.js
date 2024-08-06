@@ -3,27 +3,49 @@ import Class from '../models/class.model.js';
 // import User from '../models/User.js';
 
 // Upload a file
+// export const uploadFile = async (req, res) => {
+//   const { filename, fileUrl, uploadedBy, classId } = req.body;
+
+//   try {
+//     const newFile = new File({
+//       filename,
+//       fileUrl,
+//       uploadedBy,
+//       classId
+//     });
+
+//     await newFile.save();
+
+//     // Add file reference to the class
+//     await Class.findByIdAndUpdate(classId, { $push: { files: newFile._id } });
+
+//     res.status(201).json(newFile);
+//   } catch (error) {
+//     res.status(500).json({ message: error.message });
+//   }
+// };
+
+
 export const uploadFile = async (req, res) => {
-  const { filename, fileUrl, uploadedBy, classId } = req.body;
-
   try {
-    const newFile = new File({
-      filename,
-      fileUrl,
-      uploadedBy,
-      classId
-    });
+    const { filename, fileUrl, uploadedBy, classId } = req.body;
 
-    await newFile.save();
+    // Validate required fields
+    if (!filename || !fileUrl || !uploadedBy || !classId) {
+      return res.status(400).json({ message: 'All fields are required: filename, fileUrl, uploadedBy, classId' });
+    }
 
-    // Add file reference to the class
-    await Class.findByIdAndUpdate(classId, { $push: { files: newFile._id } });
+    // Create new file entry
+    const file = new File({ filename, fileUrl, uploadedBy, classId });
+    await file.save();
 
-    res.status(201).json(newFile);
-  } catch (error) {
-    res.status(500).json({ message: error.message });
+    res.status(201).json({ message: 'File uploaded successfully', file });
+  } catch (err) {
+    res.status(500).json({ message: 'Error uploading file', error: err.message });
   }
 };
+
+
 
 // Get all files for a class
 export const getFilesForClass = async (req, res) => {
