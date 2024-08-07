@@ -1,0 +1,43 @@
+.admin-dashboard-container {
+    padding: 2rem;
+    background-color: #f0f2f5;
+  }
+  
+  .admin-dashboard {
+    background: #ffffff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .admin-dashboard h1 {
+    margin: 0 0 1rem 0;
+    font-size: 2rem;
+  }
+  
+  .dashboard-section {
+    margin-bottom: 1.5rem;
+  }
+  
+  .dashboard-section h2 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.5rem;
+  }
+  
+  .dashboard-section p, .dashboard-section ul {
+    margin: 0;
+  }
+  
+  .dashboard-section ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .dashboard-section li {
+    padding: 0.5rem 0;
+  }
+  
+  .error-message {
+    color: red;
+  }
+  
