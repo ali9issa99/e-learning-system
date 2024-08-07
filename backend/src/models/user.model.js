@@ -7,13 +7,12 @@ const userSchema = new mongoose.Schema({
   role: String
 });
 
-// Add a method to compare passwords
+
 userSchema.methods.comparePassword = async function (candidatePassword) {
-  // Implement your password comparison logic here
-  return candidatePassword === this.password; // Simplified for example
+  
+  return candidatePassword === this.password;
 };
 
 const User = mongoose.model('User', userSchema);
 
-export { User };
-
+export default User; 

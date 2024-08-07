@@ -1,10 +1,6 @@
 import Withdrawal from '../models/withdrawals.model.js';
-// import User from '../models/user.model.js';
-// import Class from '../models/class.model.js';
 
 
-
-// Apply for withdrawal
 export const applyWithdrawal = async (req, res) => {
   const { studentId, classId, reason } = req.body;
 
@@ -17,7 +13,7 @@ export const applyWithdrawal = async (req, res) => {
 
     await withdrawal.save();
 
-    // Optionally, you can update the class or student records here if needed
+   
 
     res.status(201).json(withdrawal);
   } catch (error) {
@@ -25,7 +21,7 @@ export const applyWithdrawal = async (req, res) => {
   }
 };
 
-// Get all withdrawal requests
+
 export const getAllWithdrawals = async (req, res) => {
   try {
     const withdrawals = await Withdrawal.find()
@@ -38,7 +34,7 @@ export const getAllWithdrawals = async (req, res) => {
   }
 };
 
-// Get withdrawals for a specific class
+
 export const getWithdrawalsForClass = async (req, res) => {
   const { classId } = req.params;
 
@@ -53,7 +49,7 @@ export const getWithdrawalsForClass = async (req, res) => {
   }
 };
 
-// Approve or reject a withdrawal request
+
 export const updateWithdrawalStatus = async (req, res) => {
   const { id } = req.params;
   const { status } = req.body;

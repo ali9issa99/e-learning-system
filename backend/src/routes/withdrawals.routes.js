@@ -3,9 +3,9 @@ import { applyWithdrawal, getAllWithdrawals, getWithdrawalsForClass, updateWithd
 
 const router = express.Router();
 
-router.post('/apply', applyWithdrawal); // Endpoint to apply for withdrawal
-router.get('/', getAllWithdrawals); // Endpoint to get all withdrawal requests
-router.get('/class/:classId', getWithdrawalsForClass); // Endpoint to get withdrawals for a specific class
-router.patch('/:id/status', updateWithdrawalStatus); // Endpoint to update withdrawal status
+router.post('/apply', applyWithdrawal); 
+router.get('/', getAllWithdrawals); 
+router.get('/class/:classId', getWithdrawalsForClass); 
+router.patch('/:id/status', updateWithdrawalStatus); 
 
 export default router;

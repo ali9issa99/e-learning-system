@@ -1,8 +1,7 @@
 import Class from '../models/class.model.js';
-// import User from '../models/User.js';
-// import File from '../models/File.js';
 
-// Create a new class
+
+
 export const createClass = async (req, res) => {
   try {
     const { name, description, teacher } = req.body;
@@ -14,7 +13,7 @@ export const createClass = async (req, res) => {
   }
 };
 
-// Get all classes
+
 export const getAllClasses = async (req, res) => {
   try {
     const classes = await Class.find().populate('teacher').populate('students').populate('files');
@@ -24,7 +23,7 @@ export const getAllClasses = async (req, res) => {
   }
 };
 
-// Get a class by ID
+
 export const getClassById = async (req, res) => {
   try {
     const classId = req.params.id;
@@ -36,7 +35,7 @@ export const getClassById = async (req, res) => {
   }
 };
 
-// Update a class
+
 export const updateClass = async (req, res) => {
   try {
     const classId = req.params.id;
@@ -49,7 +48,7 @@ export const updateClass = async (req, res) => {
   }
 };
 
-// Delete a class
+
 export const deleteClass = async (req, res) => {
   try {
     const classId = req.params.id;
