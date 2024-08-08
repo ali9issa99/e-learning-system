@@ -6,10 +6,12 @@ import fileRoutes from './src/routes/files.routes.js';
 import withdrawalRoutes from './src/routes/withdrawals.routes.js';
 import connectToDatabase from './src/database/connection.js';
 import authRoutes from './src/routes/auth.routes.js';
+import cors from 'cors';
 
 dotenv.config(); 
 const app = express();
 app.use(express.json());
+app.use(cors());
 
 app.use("/api/users", usersRoutes);
 app.use('/api/classes', classRoutes);
