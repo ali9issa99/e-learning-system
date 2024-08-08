@@ -4,19 +4,15 @@ import axios from 'axios';
 import './register.css';
 
 const Register = () => {
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (password !== confirmPassword) {
-      console.error('Passwords do not match');
-      return;
-    }
     try {
-      await registerUser({ email, password });
+      await registerUser({ name, email, password });
       navigate('/login'); 
     } catch (error) {
       console.error(error);
@@ -26,6 +22,13 @@ const Register = () => {
   return (
     <div className="register-container">
       <form className="register-form" onSubmit={handleSubmit}>
+        <input
+          className="register-input"
+          type="text"
+          placeholder="Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
         <input
           className="register-input"
           type="email"
@@ -40,13 +43,6 @@ const Register = () => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <input
-          className="register-input"
-          type="password"
-          placeholder="Confirm Password"
-          value={confirmPassword}
-          onChange={(e) => setConfirmPassword(e.target.value)}
-        />
         <button className="register-button" type="submit">Register</button>
       </form>
     </div>
@@ -54,16 +50,16 @@ const Register = () => {
 };
 
 
+
 export const registerUser = async (credentials) => {
   try {
-    const response = await axios.post('/api/register', credentials, {
+    const response = await axios.post('http://localhost:5000/api/users/register', credentials, {
       headers: {
         'Content-Type': 'application/json',
       },
     });
-    return response.data; 
+    return response.data;
   } catch (error) {
-    
     throw new Error(error.response?.data?.message || 'Registration failed');
   }
 };

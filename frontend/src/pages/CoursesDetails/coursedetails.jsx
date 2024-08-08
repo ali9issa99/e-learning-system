@@ -43,7 +43,7 @@ const CourseDetails = () => {
 
 export const fetchCourseDetails = async (id) => {
   try {
-    const response = await axios.get(`/api/courses/${id}`);
+    const response = await axios.get(`http://localhost:5000/api/courses/${id}`);
     return response.data; 
   } catch (error) {
     throw new Error(error.response?.data?.message || 'Failed to fetch course details');
